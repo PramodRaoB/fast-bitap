@@ -5,34 +5,37 @@
 using namespace std;
 
 vector<int> bitap(string &t, string &p) {
-    int m = t.length();
     vector<int> ans;
-    bitset<P_LEN + 1> R;
-    R.set();
+    vector<vector<bool>> dp(P_LEN + 1, vector<bool>(T_LEN, false));
+    dp[0] = vector<bool>(T_LEN, true);
+    for(int i = 0; i < P_LEN; i++) {
+//#pragma omp parallel for
+// 4x faster with parallizing for loop
+#pragma omp simd
+// more than 20x faster with simd
 
-    vector<bitset<P_LEN + 1>> pattern_mask(alpha, R);
-    R[0] = false;
-    //build pattern mask
-    for (int i = 0; i < P_LEN; i++)
-        pattern_mask[p[i] - 'A'][i] = false;
+//#pragma omp distribute parallel for simd
+// same as using only simd?
 
-    for (int i = 0; i < m; i++) {
-        R |= pattern_mask[t[i] - 'A'];
-        R <<= 1;
-        cout << R.to_string() << "\n";
-        if (!R[P_LEN]) ans.push_back(i - P_LEN + 1);
+        for(int j = 0; j < T_LEN; j++)
+            dp[i+1][j+1] = dp[i][j] & (p[i] == t[j]);
     }
+
+    for(int i = 0; i < T_LEN; i++)
+        if(dp[P_LEN][i+1])
+            ans.push_back(i - P_LEN + 1);
+
     return ans;
 }
 
 int main() {
-    if (!freopen("../text.txt", "r", stdin)) {
+    if (!freopen("./text.txt", "r", stdin)) {
         cerr << "text.txt doesn't exist\n";
         return 1;
     }
     string t, p;
     cin >> t;
-    if (!freopen("../pattern.txt", "r", stdin)) {
+    if (!freopen("./pattern.txt", "r", stdin)) {
         cerr << "pattern.txt doesn't exist\n";
         return 1;
     }
