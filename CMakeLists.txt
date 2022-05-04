@@ -3,11 +3,12 @@ project(fast_bitap)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(bitap_base
-        bitap_base.cpp helper.cpp)
+if (BASE)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DBASE")
+elseif (FLIP)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DFLIP")
+elseif(DP)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DDP")
+endif ()
 
-add_executable(bitap_flipped
-        bitap_flipped.cpp helper.cpp)
-
-add_executable(bitap_dp
-        bitap_dp.cpp helper.cpp)
+add_executable(bitap driver.cpp bitap_base.cpp bitap_flipped.cpp bitap_dp.cpp helper.cpp)
