@@ -2,18 +2,17 @@
 #include "include.h"
 using namespace std;
 
+std::string TEXT = "text.txt";
+std::string PATTERN = "pattern.txt";
+
 int main() {
-    if (!freopen("../text.txt", "r", stdin)) {
-        cerr << "text.txt doesn't exist\n";
-        return 1;
-    }
-    string t, p;
-    cin >> t;
-    if (!freopen("../pattern.txt", "r", stdin)) {
-        cerr << "pattern.txt doesn't exist\n";
-        return 1;
-    }
-    cin >> p;
+#ifdef BUILD
+    TEXT = "../" + TEXT;
+    PATTERN = "../" + PATTERN;
+#endif
+    READ_FILE(TEXT, t);
+    READ_FILE(PATTERN, p);
+
     timeval clTime{};
     tick(&clTime);
     vector<int> ans;
