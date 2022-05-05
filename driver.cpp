@@ -14,29 +14,27 @@ int main() {
     READ_FILE(PATTERN, p);
 
     timeval clTime{};
-    tick(&clTime);
     vector<int> ans;
+    tick(&clTime);
 
 #ifdef BASE
-    cout << "Base :)\n";
     ans = bitap_base(t, p);
 #endif
 #ifdef FLIP
-    cout << "Flip :)\n";
     ans = bitap_flipped(t, p);
 #endif
 #ifdef DP
-    cout << "DP :)\n";
     ans = bitap_dp(t, p);
 #endif
 
     double calcTime = tock(&clTime);
-    for (auto &i: ans) cout << i << " ";
-    cout << "\n";
-    cout << "***-----***\n";
-    cout << "Length of text: " << t.length() << "\n";
-    cout << "Length of pattern: " << p.length() << "\n";
-    cout << "Number of matches found: " << ans.size() << "\n";
-    cout << "Time Taken(ms): " << calcTime * 1000 << "\n";
+//    for (auto &i: ans) cout << i << " ";
+//    cout << "\n";
+//    cout << "***-----***\n";
+//    cout << "Length of text: " << t.length() << "\n";
+//    cout << "Length of pattern: " << p.length() << "\n";
+//    cout << "Number of matches found: " << ans.size() << "\n";
+//    cout << "Time Taken(ms): " << calcTime * 1000 << "\n";
+    cout << calcTime * 1000;
     return 0;
 }
