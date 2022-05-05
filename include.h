@@ -5,10 +5,8 @@
 #include <vector>
 
 const int alpha = 4;
-//#define P_LEN 108
-//#define T_LEN 345600
-#define T_LEN 20
-#define P_LEN 3
+#define P_LEN 108
+#define T_LEN 345600
 
 #define READ_FILE(f, str)                                                      \
   string str;                                                                  \

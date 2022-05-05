@@ -1,4 +1,3 @@
-#include <iostream>
 #include "include.h"
 using namespace std;
 
@@ -17,7 +16,6 @@ vector<int> bitap_base(string &t, string &p) {
     for (int i = 0; i < m; i++) {
         R |= pattern_mask[t[i] - 'A'];
         R <<= 1;
-        cout << R.to_string() << "\n";
         if (!R[P_LEN]) ans.push_back(i - P_LEN + 1);
     }
     return ans;
