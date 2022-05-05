@@ -19,8 +19,8 @@ const int alpha = 4;
 #define INP 2
 #endif
 
-const long long text_len[] = {0, 1, 2};
-const long long pattern_len[] = {3, 4, 5};
+const long long text_len[] = {10035, 3147090, 23011544};
+const long long pattern_len[] = {100, 490, 1750};
 
 const std::string text_file[] = {"sequences/small_t.txt", "sequences/med_t.txt", "sequences/large_t.txt"};
 const std::string pattern_file[] = {"sequences/small_p.txt", "sequences/med_p.txt", "sequences/large_p.txt"};
