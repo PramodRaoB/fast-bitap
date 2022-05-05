@@ -29,13 +29,13 @@ int main() {
 #endif
 
     double calcTime = tock(&clTime);
-//    for (auto &i: ans) cout << i << " ";
-//    cout << "\n";
-//    cout << "***-----***\n";
-//    cout << "Length of text: " << t.length() << "\n";
-//    cout << "Length of pattern: " << p.length() << "\n";
-//    cout << "Number of matches found: " << ans.size() << "\n";
-//    cout << "Time Taken(ms): " << calcTime * 1000 << "\n";
-    cout << calcTime * 1000;
+    for (auto &i: ans) cout << i << " ";
+    cout << "\n";
+    cout << "***-----***\n";
+    cout << "Length of text: " << t.length() << "\n";
+    cout << "Length of pattern: " << p.length() << "\n";
+    cout << "Number of matches found: " << ans.size() << "\n";
+    cout << "Time Taken(ms): " << calcTime * 1000 << "\n";
+//    cout << calcTime * 1000;
     return 0;
 }

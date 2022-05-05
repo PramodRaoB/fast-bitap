@@ -11,11 +11,17 @@ const int alpha = 4;
 
 #ifdef SMALL
 #define INP 0
+#define P_LEN 100
+#define T_LEN 10035
 #endif
 #ifdef MED
+#define P_LEN 490
+#define T_LEN 3147090
 #define INP 1
 #endif
 #ifdef LARGE
+#define P_LEN 1750
+#define T_LEN 23011544
 #define INP 2
 #endif
 
@@ -25,8 +31,6 @@ const long long pattern_len[] = {100, 490, 1750};
 const std::string text_file[] = {"sequences/small_t.txt", "sequences/med_t.txt", "sequences/large_t.txt"};
 const std::string pattern_file[] = {"sequences/small_p.txt", "sequences/med_p.txt", "sequences/large_p.txt"};
 
-const long long P_LEN = pattern_len[INP];
-const long long T_LEN = text_len[INP];
 const std::string TEXT = text_file[INP];
 const std::string PATTERN = pattern_file[INP];
 
