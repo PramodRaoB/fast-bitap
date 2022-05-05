@@ -12,7 +12,11 @@ const int alpha = 4;
 #define READ_FILE(f, str)                                                      \
   string str;                                                                  \
   file.open((f).c_str());                                                      \
-  file >> (str);                                                               \
+  while(!file.eof()) {                                                         \
+      string line;                                                             \
+      file >> line;                                                            \
+      (str).append(line);                                                      \
+  }                                                                            \
   file.close();
 
 void tick(struct timeval *t);
