@@ -2,19 +2,18 @@
 #define FAST_BITAP_INCLUDE_H
 
 #include <bitset>
+#include <fstream>
 #include <vector>
 
 const int alpha = 4;
-#define P_LEN 108
-#define T_LEN 345600
+#define P_LEN 542
+#define T_LEN 309043
 
 #define READ_FILE(f, str)                                                      \
   string str;                                                                  \
-  if (!freopen(f.c_str(), "r", stdin)) {                                               \
-    cerr << (f) << " doesn't exist\n";                                         \
-    return 1;                                                                  \
-  }                                                                            \
-  cin >> (str);
+  file.open((f).c_str());                                                      \
+  file >> (str);                                                               \
+  file.close();
 
 void tick(struct timeval *t);
 double tock(struct timeval *t);

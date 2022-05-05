@@ -4,6 +4,7 @@ using namespace std;
 
 std::string TEXT = "text.txt";
 std::string PATTERN = "pattern.txt";
+std::ifstream file;
 
 int main() {
 #ifdef BUILD
