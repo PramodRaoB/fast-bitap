@@ -51,5 +51,6 @@ double tock(struct timeval *t);
 std::vector<int> bitap_base(std::string &t, std::string &p);
 std::vector<int> bitap_flipped(std::string &t, std::string &p);
 std::vector<int> bitap_dp(std::string &t, std::string &p);
+std::vector<int> bitap_dp_parallel(std::string &t, std::string &p, int begin, int end);
 
 #endif // FAST_BITAP_INCLUDE_H
