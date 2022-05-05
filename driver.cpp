@@ -2,17 +2,17 @@
 #include "include.h"
 using namespace std;
 
-std::string TEXT = "text.txt";
-std::string PATTERN = "pattern.txt";
+std::string text = TEXT;
+std::string pattern = PATTERN;
 std::ifstream file;
 
 int main() {
 #ifdef BUILD
-    TEXT = "../" + TEXT;
-    PATTERN = "../" + PATTERN;
+    text = "../" + text;
+    pattern = "../" + pattern;
 #endif
-    READ_FILE(TEXT, t);
-    READ_FILE(PATTERN, p);
+    READ_FILE(text, t);
+    READ_FILE(pattern, p);
 
     timeval clTime{};
     vector<int> ans;

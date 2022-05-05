@@ -2,7 +2,7 @@
 project(fast_bitap)
 
 set(CMAKE_CXX_STANDARD 14)
-set(CMAKE_CXX_FLAGS "-O3 -fopenmp-simd -fopenmp -mavx512f -DBUILD -g")
+set(CMAKE_CXX_FLAGS "-O3 -fopenmp-simd -fopenmp -mavx512f -DBUILD -DLARGE -g")
 
 if (BASE)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DBASE")

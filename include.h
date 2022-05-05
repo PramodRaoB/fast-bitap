@@ -6,8 +6,30 @@
 #include <vector>
 
 const int alpha = 4;
-#define P_LEN 542
-#define T_LEN 309043
+//#define P_LEN 542
+//#define T_LEN 309043
+
+#ifdef SMALL
+#define INP 0
+#endif
+#ifdef MED
+#define INP 1
+#endif
+#ifdef LARGE
+#define INP 2
+#endif
+
+const long long text_len[] = {0, 1, 2};
+const long long pattern_len[] = {3, 4, 5};
+
+const std::string text_file[] = {"sequences/small_t.txt", "sequences/med_t.txt", "sequences/large_t.txt"};
+const std::string pattern_file[] = {"sequences/small_p.txt", "sequences/med_p.txt", "sequences/large_p.txt"};
+
+const long long P_LEN = pattern_len[INP];
+const long long T_LEN = text_len[INP];
+const std::string TEXT = text_file[INP];
+const std::string PATTERN = pattern_file[INP];
+
 
 #define READ_FILE(f, str)                                                      \
   string str;                                                                  \
