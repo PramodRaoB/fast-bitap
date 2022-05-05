@@ -1,5 +1,5 @@
 CC         := g++
-CPPFLAGS     := -fopenmp -O3 -fopenmp-simd -mavx2 -falign-loops=32 -D$(TYPE) -g
+CPPFLAGS     := -fopenmp -O3 -fopenmp-simd -mavx512bw -falign-loops=32 -D$(TYPE) -g
 
 BUILD_DIR := build
 
