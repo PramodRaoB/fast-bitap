@@ -6,6 +6,7 @@
 #include <vector>
 
 const int alpha = 4;
+#define CHUNK_SIZE 256
 //#define P_LEN 542
 //#define T_LEN 309043
 
@@ -53,5 +54,6 @@ std::vector<int> bitap_flipped(std::string &t, std::string &p);
 std::vector<int> bitap_flipped_parallel(std::string &t, std::string &p);
 std::vector<int> bitap_dp(std::string &t, std::string &p);
 std::vector<int> bitap_dp_parallel(std::string &t, std::string &p);
+std::vector<int> bitap_dp_scheduling(std::string &t, std::string &p);
 
 #endif // FAST_BITAP_INCLUDE_H

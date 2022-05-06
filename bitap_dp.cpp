@@ -67,3 +67,33 @@ vector<int> bitap_dp_parallel(string &t, string &p) {
     }
     return ans;
 }
+
+vector<int> bitap_dp_scheduling(string &t, string &p) {
+    // parallelogram division, each core does n/num_cores of work
+    // each core finds matches starting in the segment assigned to it
+    vector<int> ans;
+    int n = T_LEN - P_LEN + 1;
+#pragma omp parallel for schedule(dynamic, 1)
+    for (int i = 0; i < n; i += CHUNK_SIZE) {
+        vector<int> thread_ans;
+        bitset<CHUNK_SIZE + 1> dp;
+        dp.set();
+        int end = min(i + CHUNK_SIZE, n);
+        int begin = i;
+        for (int j = 0; j < P_LEN; j++) {
+            for (int k = begin; k < end; k++)
+                dp[k - begin] = dp[k - begin] & (p[j] == t[k + j]);
+        }
+        for (int j = begin; j < end; j++)
+            if (dp[j - begin])
+                thread_ans.push_back(j);
+
+        if(thread_ans.size() > 0) {
+#pragma omp critical
+            {
+                ans.insert(ans.end(), thread_ans.begin(), thread_ans.end());
+            }
+        }
+    }
+    return ans;
+}
