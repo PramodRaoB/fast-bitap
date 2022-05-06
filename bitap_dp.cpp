@@ -33,6 +33,9 @@ vector<int> bitap_dp(string &t, string &p) {
 }
 
 vector<int> bitap_dp_parallel(string &t, string &p) {
+    // parallelogram division, each core does n/num_cores of work
+    // each core finds matches starting in the segment assigned to it
+
     vector<int> ans;
     long long n = T_LEN - P_LEN + 1;
 #pragma omp parallel
