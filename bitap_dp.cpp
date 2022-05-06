@@ -1,3 +1,6 @@
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "openmp-use-default-none"
+
 #include <iostream>
 #include <omp.h>
 #include "include.h"
@@ -37,13 +40,13 @@ vector<int> bitap_dp_parallel(string &t, string &p) {
     // each core finds matches starting in the segment assigned to it
 
     vector<int> ans;
-    long long n = T_LEN - P_LEN + 1;
+    int n = T_LEN - P_LEN + 1;
 #pragma omp parallel
     {
-        long long seg_size = n / omp_get_num_threads();
+        int seg_size = n / omp_get_num_threads();
         int tid = omp_get_thread_num();
-        long long begin = tid * seg_size;
-        long long end = (tid + 1) * seg_size;
+        int begin = tid * seg_size;
+        int end = (tid + 1) * seg_size;
         if (tid == omp_get_num_threads() - 1)
             end = n;
 
@@ -58,7 +61,7 @@ vector<int> bitap_dp_parallel(string &t, string &p) {
             if (dp[i - begin])
                 thread_ans.push_back(i);
 
-        if(thread_ans.size() > 0) {
+        if (!thread_ans.empty()) {
 #pragma omp critical
             {
                 ans.insert(ans.end(), thread_ans.begin(), thread_ans.end());
@@ -88,7 +91,7 @@ vector<int> bitap_dp_scheduling(string &t, string &p) {
             if (dp[j - begin])
                 thread_ans.push_back(j);
 
-        if(thread_ans.size() > 0) {
+        if (!thread_ans.empty()) {
 #pragma omp critical
             {
                 ans.insert(ans.end(), thread_ans.begin(), thread_ans.end());
@@ -97,3 +100,5 @@ vector<int> bitap_dp_scheduling(string &t, string &p) {
     }
     return ans;
 }
+
+#pragma clang diagnostic pop

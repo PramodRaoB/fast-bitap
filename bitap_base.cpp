@@ -2,7 +2,6 @@
 using namespace std;
 
 vector<int> bitap_base(string &t, string &p) {
-    int m = t.length();
     vector<int> ans;
     bitset<P_LEN + 1> R;
     R.set();
@@ -13,7 +12,7 @@ vector<int> bitap_base(string &t, string &p) {
     for (int i = 0; i < P_LEN; i++)
         pattern_mask[p[i] - 'A'][i] = false;
 
-    for (int i = 0; i < m; i++) {
+    for (int i = 0; i < T_LEN; i++) {
         R |= pattern_mask[t[i] - 'A'];
         R <<= 1;
         if (!R[P_LEN]) ans.push_back(i - P_LEN + 1);
