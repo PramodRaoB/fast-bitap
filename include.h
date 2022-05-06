@@ -6,7 +6,10 @@
 #include <vector>
 
 const int alpha = 4;
-#define CHUNK_SIZE 256
+// Below chunk size for DP
+//#define CHUNK_SIZE 256
+// Below chink size for flip
+#define CHUNK_SIZE 65536
 //#define P_LEN 542
 //#define T_LEN 309043
 
@@ -37,7 +40,7 @@ const std::string PATTERN = pattern_file[INP];
 
 
 #define READ_FILE(f, str)                                                      \
-  string str;                                                                  \
+  string __attribute__ ((aligned (8))) (str);                                                                  \
   file.open((f).c_str());                                                      \
   while(!file.eof()) {                                                         \
       string line;                                                             \

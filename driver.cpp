@@ -24,8 +24,8 @@ int main() {
     ans = bitap_base(t, p);
 #endif
 #ifdef FLIP
-//    ans = bitap_flipped(t, p);
-    ans = bitap_flipped_parallel(t, p);
+//        ans = bitap_flipped(t, p);
+        ans = bitap_flipped_parallel(t, p);
 #endif
 #ifdef DP
 //    ans = bitap_dp(t, p);
