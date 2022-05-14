@@ -12,4 +12,4 @@ for j in range(benchCount):
         print(temp)
         sum += temp
 
-print("Average: ", sum / benchCount)
+print(sum / benchCount)
